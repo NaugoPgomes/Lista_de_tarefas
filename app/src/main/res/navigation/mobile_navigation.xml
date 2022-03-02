@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_todos">
+
+    <fragment
+        android:id="@+id/nav_todos"
+        android:name="com.naugo.listadetarefas.ui.home.TodosFragment"
+        android:label="@string/menu_todos"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_finalizadas"
+        android:name="com.naugo.listadetarefas.ui.gallery.FinalizadasFragment"
+        android:label="@string/menu_finalizadas"
+        tools:layout="@layout/fragment_gallery" />
+
+</navigation>
