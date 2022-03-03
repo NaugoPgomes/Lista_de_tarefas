@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/nav_todos"
-        android:name="com.naugo.listadetarefas.ui.home.TodosFragment"
+        android:name="com.naugo.listadetarefas.view.TodosFragment"
         android:label="@string/menu_todos"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_finalizadas"
-        android:name="com.naugo.listadetarefas.ui.gallery.FinalizadasFragment"
+        android:name="com.naugo.listadetarefas.view.FinalizadasFragment"
         android:label="@string/menu_finalizadas"
         tools:layout="@layout/fragment_gallery" />
 

@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ListaDeTarefas">
-        <activity android:name=".CadastroTarefaActivity"></activity>
+        <activity android:name=".view.CadastroTarefaActivity"></activity>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"

@@ -1,13 +1,13 @@
-package com.naugo.listadetarefas.ui.gallery
+package com.naugo.listadetarefas.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class FinalizadasViewModel : ViewModel() {
+class TodosViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is gallery Fragment"
+        value = "This is home Fragment"
     }
     val text: LiveData<String> = _text
 }
