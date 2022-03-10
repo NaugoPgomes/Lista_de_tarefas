@@ -9,4 +9,5 @@
 
     <string name="menu_todos">Todos</string>
     <string name="menu_finalizadas">Finalizadas</string>
+    <string name="finalizada">Finalizada</string>
 </resources>

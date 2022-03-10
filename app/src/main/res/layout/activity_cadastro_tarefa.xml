@@ -23,12 +23,36 @@
         android:layout_marginTop="15dp"
         android:hint="Data"/>
 
-    <Button
-        android:id="@+id/button_save"
+    <EditText
+        android:id="@+id/hora"
         android:layout_below="@+id/data"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="15dp"
+        android:hint="Hora"/>
+
+    <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_below="@+id/hora"
+        android:layout_marginTop="15dp"
+        >
+
+        <RadioButton
+            android:id="@+id/radio_Finalizada"
+            android:layout_width="116dp"
+            android:layout_height="wrap_content"
+            android:text="@string/finalizada" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/button_save"
+        android:layout_below="@+id/hora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="65dp"
         android:text="Salvar"/>
 
 

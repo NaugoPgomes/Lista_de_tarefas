@@ -3,6 +3,8 @@ package com.naugo.listadetarefas.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.naugo.listadetarefas.viewModel.CadastroTarefasViewModel
 import com.naugo.listadetarefas.R
@@ -20,20 +22,40 @@ class CadastroTarefaActivity : AppCompatActivity(), View.OnClickListener {
         mViewModel = ViewModelProvider(this).get(CadastroTarefasViewModel::class.java)
 
         setListeners()
+        observe()
     }
 
+    override fun onClick(v: View?) {
+        val id = v?.id
+        if (id == R.id.button_save) {
+            val nome_tarefa = tarefa.text.toString()
+            val data_tarefa = data.text.toString()
+            val hora_tarefa = data.text.toString()
+            val tarefa_finalizada = radio_Finalizada.isChecked
 
-    private fun setListeners()
+            mViewModel.save(nome_tarefa, data_tarefa, hora_tarefa, tarefa_finalizada)
+        }
+    }
+
+    private fun observe()
     {
+        mViewModel.SalvarFormulario.observe(this, Observer
+        {
+            if(it)
+            {
+                Toast.makeText(applicationContext, "Sucesso", Toast.LENGTH_SHORT).show()
+            }
+            else
+            {
+                Toast.makeText(applicationContext, "Falha", Toast.LENGTH_SHORT).show()
+            }
+            finish()
+        })
+    }
+
+    private fun setListeners() {
         button_save.setOnClickListener(this)
     }
 
-    override fun onClick(v: View?)
-    {
-        val id = v?.id
-        if(id == R.id.button_save)
-        {
 
-        }
-    }
 }
