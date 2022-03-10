@@ -6,10 +6,6 @@ import android.database.sqlite.SQLiteOpenHelper
 import com.naugo.listadetarefas.service.constants.DataBaseConstants
 
 
-// SQLiteopenHelper é uma classe do android que faz a conexão com o banco
-
-// GuestDataBaseHelper, ela que vai nos fornecer a possibilidade de acessar o banco
-
 class GuestDataBaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME,
         null, VERSION) {
     override fun onCreate(db: SQLiteDatabase) {

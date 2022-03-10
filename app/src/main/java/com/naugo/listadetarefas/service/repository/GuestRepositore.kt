@@ -8,13 +8,6 @@ import com.naugo.listadetarefas.service.model.GuestModel
 
 class GuestRepositore private constructor(context: Context) {
 
-    // essa classe tem a responsabilidade de salvar os valores no banco de dados...
-    // crud - criação, leitura, update, deletar
-
-    // Singleton -> você tem somente uma instancia da sua classe Repositore, com isso eu so consigo ter uma conexão com
-    // o banco de dados ao mesmo tempo, com isso eu evito concorrencia de conexão com o banco e isso evita escrever, ler
-    // informaçoes desatualizadas
-
     // inicio singleton
     private var mGuestDataBaseHelper: GuestDataBaseHelper = GuestDataBaseHelper(context)
 
@@ -80,7 +73,7 @@ class GuestRepositore private constructor(context: Context) {
         return try {
             val db = mGuestDataBaseHelper.readableDatabase
 
-            val cursor = db.rawQuery("SELECT id, tarefa, data, hora, concluida FROM Guest WHERE presence = 1",
+            val cursor = db.rawQuery("SELECT id, tarefa, data, hora, concluida FROM Guest WHERE concluida = 1",
                     null)
 
             if(cursor != null && cursor.count > 0)
