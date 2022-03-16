@@ -31,9 +31,10 @@ class CadastroTarefaActivity : AppCompatActivity(), View.OnClickListener {
             val nome_tarefa = tarefa.text.toString()
             val data_tarefa = data.text.toString()
             val hora_tarefa = hora.text.toString()
-            val tarefa_finalizada = radio_Finalizada.isChecked
+            val concluida_tarefa = radio_Finalizada.isChecked
 
-            mViewModel.save(nome_tarefa, data_tarefa, hora_tarefa, tarefa_finalizada)
+
+            mViewModel.save(nome_tarefa, data_tarefa, hora_tarefa, concluida_tarefa)
         }
     }
 

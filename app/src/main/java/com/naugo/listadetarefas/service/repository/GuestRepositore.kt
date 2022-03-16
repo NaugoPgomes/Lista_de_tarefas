@@ -50,7 +50,7 @@ class GuestRepositore private constructor(context: Context) {
                     val hora = cursor.getString(cursor.getColumnIndex(DataBaseConstants.GUEST.COLUMNS.HORA))
                     val concluida = (cursor.getInt(cursor.getColumnIndex(DataBaseConstants.GUEST.COLUMNS.CONCLUIDA)) == 1)
 
-                    val guest = GuestModel(id, produto, data, hora, concluida)
+                    val guest = GuestModel(id, produto, data, hora,concluida)
                     list.add(guest)
                 }
 
