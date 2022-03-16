@@ -15,10 +15,25 @@ class CadastroTarefasViewModel(application: Application) : AndroidViewModel(appl
     private var mSalvarFormulario = MutableLiveData<Boolean>() // tem como mudar valor (por isso o m no inicio)
     val SalvarFormulario: LiveData<Boolean> = mSalvarFormulario // não da para mudar valor
 
-    fun save(tarefa: String, data: String, hora: String, concluida: Boolean) {
-        val guest = GuestModel(tarefa = tarefa, data = data, hora = hora, concluida = concluida)
+    private var mGuest = MutableLiveData<GuestModel>()
+    val guest: LiveData<GuestModel> = mGuest
 
-        mSalvarFormulario.value = mGuestRepositore.save(guest)
+    fun save(id: Int, tarefa: String, data: String, hora: String, concluida: Boolean) {
+        val guest = GuestModel(id, tarefa,data, hora, concluida)
+
+        if(id == 0)
+        {
+            mSalvarFormulario.value = mGuestRepositore.save(guest)
+        }
+        else
+        {
+            mSalvarFormulario.value = mGuestRepositore.update(guest)
+        }
+    }
+
+    fun load(id : Int)
+    {
+        mGuest.value = mGuestRepositore.get(id)
     }
 
 }

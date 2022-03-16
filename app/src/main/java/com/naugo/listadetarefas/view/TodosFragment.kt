@@ -1,5 +1,6 @@
 package com.naugo.listadetarefas.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +12,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.naugo.listadetarefas.R
+import com.naugo.listadetarefas.service.constants.GuestConstants
 import com.naugo.listadetarefas.view.adapter.GuestAdapter
+import com.naugo.listadetarefas.view.listener.GuestListener
 import com.naugo.listadetarefas.viewModel.TodosViewModel
 import kotlinx.android.synthetic.main.fragment_todos.*
 
@@ -19,6 +22,7 @@ class TodosFragment : Fragment() {
 
   private lateinit var todosViewModel: TodosViewModel
   private val mAdapter: GuestAdapter = GuestAdapter()
+  private lateinit var mListener: GuestListener
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
     todosViewModel =
@@ -35,6 +39,22 @@ class TodosFragment : Fragment() {
     //3 - definir um adapter
 
     recylcer.adapter = mAdapter
+
+    mListener = object : GuestListener{
+      override fun onClick(id: Int) {
+        val intent = Intent(context, CadastroTarefaActivity::class.java)
+
+        val bundle = Bundle()
+        bundle.putInt(GuestConstants.GUESTID,id)
+
+        intent.putExtras(bundle)
+
+        startActivity(intent)
+      }
+
+    }
+
+    mAdapter.attachListener(mListener)
 
     observer()
 

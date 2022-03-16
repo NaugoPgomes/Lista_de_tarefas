@@ -8,11 +8,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.naugo.listadetarefas.viewModel.CadastroTarefasViewModel
 import com.naugo.listadetarefas.R
+import com.naugo.listadetarefas.service.constants.GuestConstants
 import kotlinx.android.synthetic.main.activity_cadastro_tarefa.*
 
 class CadastroTarefaActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var mViewModel: CadastroTarefasViewModel
+    private var mGuestId: Int = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +25,18 @@ class CadastroTarefaActivity : AppCompatActivity(), View.OnClickListener {
 
         setListeners()
         observe()
+        loadData()
+
+    }
+
+    private fun loadData()
+    {
+        val bundle = intent.extras
+        if(bundle != null)
+        {
+            mGuestId = bundle.getInt(GuestConstants.GUESTID)
+            mViewModel.load(mGuestId)
+        }
     }
 
     override fun onClick(v: View?) {
@@ -34,7 +48,7 @@ class CadastroTarefaActivity : AppCompatActivity(), View.OnClickListener {
             val concluida_tarefa = radio_Finalizada.isChecked
 
 
-            mViewModel.save(nome_tarefa, data_tarefa, hora_tarefa, concluida_tarefa)
+            mViewModel.save(mGuestId,nome_tarefa, data_tarefa, hora_tarefa, concluida_tarefa)
         }
     }
 
@@ -52,6 +66,17 @@ class CadastroTarefaActivity : AppCompatActivity(), View.OnClickListener {
             }
             finish()
         })
+
+        mViewModel.guest.observe(this, Observer {
+            tarefa.setText(it.tarefa)
+            hora.setText(it.hora)
+            data.setText(it.data)
+            if(it.concluida)
+            {
+                radio_Finalizada.isChecked = true
+            }
+        })
+
     }
 
     private fun setListeners() {
