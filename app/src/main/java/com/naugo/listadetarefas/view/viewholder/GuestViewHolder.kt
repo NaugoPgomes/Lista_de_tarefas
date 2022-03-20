@@ -22,6 +22,8 @@ class GuestViewHolder(itemView: View, private val listener: GuestListener) : Rec
         val textData = itemView.findViewById<TextView>(R.id.id_data)
         textData.text = guest.data
 
+
+
         textTarefa.setOnClickListener {
             listener.onClick(guest.id)
         }
@@ -39,4 +41,7 @@ class GuestViewHolder(itemView: View, private val listener: GuestListener) : Rec
             true
         }
     }
+
+
+
 }
