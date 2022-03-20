@@ -52,6 +52,12 @@ class TodosFragment : Fragment() {
         startActivity(intent)
       }
 
+      override fun onDelete(id: Int)
+      {
+        todosViewModel.delete(id)
+        todosViewModel.load()
+      }
+
     }
 
     mAdapter.attachListener(mListener)

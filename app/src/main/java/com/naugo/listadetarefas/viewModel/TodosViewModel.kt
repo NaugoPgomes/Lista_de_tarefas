@@ -19,4 +19,9 @@ class TodosViewModel(application: Application) : AndroidViewModel(application) {
     {
         mGuestList.value = mGuestRepositore.getAll()
     }
+
+    fun delete(id: Int)
+    {
+        mGuestRepositore.deletar(id)
+    }
 }
