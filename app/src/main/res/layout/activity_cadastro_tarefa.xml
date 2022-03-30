@@ -16,39 +16,38 @@
         android:layout_marginTop="15dp" />
 
     <EditText
-        android:id="@+id/data"
-        android:layout_below="@+id/tarefa"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="15dp"
-        android:hint="Data"/>
-
-    <EditText
         android:id="@+id/hora"
-        android:layout_below="@+id/data"
+        android:layout_below="@+id/tarefa"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="15dp"
         android:hint="Hora"/>
 
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <Button
+        android:id="@+id/data"
         android:layout_below="@+id/hora"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/white"
         android:layout_marginTop="15dp"
-        >
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        android:hint="Clique para selecionar a Data"/>
 
-        <RadioButton
-            android:id="@+id/radio_Finalizada"
-            android:layout_width="116dp"
-            android:layout_height="wrap_content"
-            android:text="@string/finalizada" />
 
-    </RadioGroup>
+
+    <CheckBox
+        android:id="@+id/CheckBox_Finalizada"
+        android:layout_width="116dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/data"
+        android:text="@string/finalizada" />
+
 
     <Button
         android:id="@+id/button_save"
-        android:layout_below="@+id/hora"
+        android:layout_below="@+id/data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"

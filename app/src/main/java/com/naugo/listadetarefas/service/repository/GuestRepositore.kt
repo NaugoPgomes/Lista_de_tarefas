@@ -31,14 +31,8 @@ class GuestRepositore private constructor(context: Context) {
         return try {
             val db = mGuestDataBaseHelper.readableDatabase
 
-            val projection = arrayOf(DataBaseConstants.GUEST.COLUMNS.ID,
-                    DataBaseConstants.GUEST.COLUMNS.TAREFA,
-                    DataBaseConstants.GUEST.COLUMNS.DATA,
-                    DataBaseConstants.GUEST.COLUMNS.HORA,
-                    DataBaseConstants.GUEST.COLUMNS.CONCLUIDA)
-
-            val cursor = db.query(DataBaseConstants.GUEST.TABLE_NAME,projection, null, null,
-                    null,null,null)
+            val cursor = db.rawQuery("SELECT id, tarefa, data, hora, concluida FROM Guest WHERE concluida = 0",
+                    null)
 
             if(cursor != null && cursor.count > 0)
             {

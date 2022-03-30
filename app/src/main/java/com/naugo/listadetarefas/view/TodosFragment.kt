@@ -55,7 +55,7 @@ class TodosFragment : Fragment() {
       override fun onDelete(id: Int)
       {
         todosViewModel.delete(id)
-        todosViewModel.load()
+        todosViewModel.load(GuestConstants.FILTER.EMPTY)
       }
 
     }
@@ -72,7 +72,7 @@ class TodosFragment : Fragment() {
   override fun onResume()
   {
     super.onResume()
-    todosViewModel.load()
+    todosViewModel.load(GuestConstants.FILTER.EMPTY)
 
   }
 
