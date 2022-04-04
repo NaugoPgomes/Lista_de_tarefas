@@ -3,17 +3,16 @@ package com.naugo.listadetarefas.view.viewholder
 import android.app.AlertDialog
 import android.view.View
 import android.widget.TextView
-import androidx.appcompat.view.menu.MenuView
 import androidx.recyclerview.widget.RecyclerView
 import com.naugo.listadetarefas.R
-import com.naugo.listadetarefas.service.model.GuestModel
-import com.naugo.listadetarefas.view.listener.GuestListener
+import com.naugo.listadetarefas.service.model.Model
+import com.naugo.listadetarefas.view.listener.Listener
 
-class GuestViewHolder(itemView: View, private val listener: GuestListener) : RecyclerView.ViewHolder(itemView)
+class ViewHolder(itemView: View, private val listener: Listener) : RecyclerView.ViewHolder(itemView)
 {
     // essa clase que armazena referencia aos elementos de interface
 
-    fun bind(guest: GuestModel)
+    fun bind(guest: Model)
     {
         val textTarefa = itemView.findViewById<TextView>(R.id.id_tarefa)
         textTarefa.text = guest.tarefa

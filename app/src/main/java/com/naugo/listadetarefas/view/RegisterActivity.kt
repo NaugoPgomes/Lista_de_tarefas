@@ -34,9 +34,16 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
             val email_usuario = email.text.toString()
             val senha_usuario = senha.text.toString()
+            val confirmar_senha_usuario = confirmar_senha.text.toString()
 
-
-            mViewModel.Registrar(mGuestId,email_usuario, senha_usuario)
+            if(senha_usuario.equals(confirmar_senha_usuario))
+            {
+                mViewModel.Registrar(mGuestId,email_usuario, senha_usuario)
+            }
+            else
+            {
+                Toast.makeText(applicationContext, "A senha tem que estar igual nos dois campos", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -47,7 +54,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun observe()
     {
-        mViewModel.registrarGuest.observe(this, Observer {
+        mViewModel.registrar.observe(this, Observer {
             if(it)
             {
                 Toast.makeText(applicationContext, "Usuario Cadastrado com sucesso", Toast.LENGTH_SHORT).show()

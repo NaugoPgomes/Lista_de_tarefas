@@ -12,15 +12,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.naugo.listadetarefas.R
 import com.naugo.listadetarefas.service.constants.TarefasConstants
-import com.naugo.listadetarefas.view.adapter.GuestAdapter
-import com.naugo.listadetarefas.view.listener.GuestListener
+import com.naugo.listadetarefas.view.adapter.Adapter
+import com.naugo.listadetarefas.view.listener.Listener
 import com.naugo.listadetarefas.viewModel.TodosViewModel
 
 class TodosFragment : Fragment() {
 
   private lateinit var todosViewModel: TodosViewModel
-  private val mAdapter: GuestAdapter = GuestAdapter()
-  private lateinit var mListener: GuestListener
+  private val mAdapter: Adapter = Adapter()
+  private lateinit var mListener: Listener
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
     todosViewModel =
@@ -38,12 +38,12 @@ class TodosFragment : Fragment() {
 
     recylcer.adapter = mAdapter
 
-    mListener = object : GuestListener{
+    mListener = object : Listener{
       override fun onClick(id: Int) {
         val intent = Intent(context, CadastroTarefaActivity::class.java)
 
         val bundle = Bundle()
-        bundle.putInt(TarefasConstants.GUESTID,id)
+        bundle.putInt(TarefasConstants.TAREFASID,id)
 
         intent.putExtras(bundle)
 
@@ -75,8 +75,8 @@ class TodosFragment : Fragment() {
   }
 
   private fun observer() {
-    todosViewModel.guestList.observe(viewLifecycleOwner, Observer {
-      mAdapter.updateGuests(it)
+    todosViewModel.TarefastList.observe(viewLifecycleOwner, Observer {
+      mAdapter.updateTarefas(it)
     })
   }
 }

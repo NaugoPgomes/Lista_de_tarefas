@@ -36,7 +36,7 @@ class LoginActivity : AppCompatActivity() {
 
         var args = listOf<String>(email.text.toString(), senha.text.toString()).toTypedArray()
 
-        var rs = db.rawQuery("SELECT * FROM GuestUsuario WHERE EMAIL = ? AND SENHA = ? ",args)
+        var rs = db.rawQuery("SELECT * FROM Usuario WHERE EMAIL = ? AND SENHA = ? ",args)
 
         if(rs.moveToNext())
         {

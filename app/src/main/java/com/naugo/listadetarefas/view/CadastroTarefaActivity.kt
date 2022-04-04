@@ -39,7 +39,7 @@ class CadastroTarefaActivity : AppCompatActivity(), View.OnClickListener, DatePi
         val bundle = intent.extras
         if(bundle != null)
         {
-            mGuestId = bundle.getInt(TarefasConstants.GUESTID)
+            mGuestId = bundle.getInt(TarefasConstants.TAREFASID)
             mViewModel.load(mGuestId)
         }
     }

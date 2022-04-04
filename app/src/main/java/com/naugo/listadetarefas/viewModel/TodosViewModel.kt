@@ -5,30 +5,30 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.naugo.listadetarefas.service.constants.TarefasConstants
-import com.naugo.listadetarefas.service.model.GuestModel
+import com.naugo.listadetarefas.service.model.Model
 import com.naugo.listadetarefas.service.repository.Repositore
 
 class TodosViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val mGuestRepositore = Repositore.getInstance(application.applicationContext)
+    private val mTarefasRepositore = Repositore.getInstance(application.applicationContext)
 
-    private val mGuestList = MutableLiveData<List<GuestModel>>()
-    val guestList: LiveData<List<GuestModel>> = mGuestList
+    private val mTarefasList = MutableLiveData<List<Model>>()
+    val TarefastList: LiveData<List<Model>> = mTarefasList
 
     fun load(filter: Int)
     {
         if(filter == TarefasConstants.FILTER.EMPTY)
         {
-            mGuestList.value = mGuestRepositore.getAll()
+            mTarefasList.value = mTarefasRepositore.getAll()
         }
        else
         {
-            mGuestList.value = mGuestRepositore.getConcluidas()
+            mTarefasList.value = mTarefasRepositore.getConcluidas()
         }
     }
 
     fun delete(id: Int)
     {
-        mGuestRepositore.deletar(id)
+        mTarefasRepositore.deletar(id)
     }
 }

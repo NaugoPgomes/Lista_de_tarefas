@@ -3,9 +3,9 @@ package com.naugo.listadetarefas.service.constants
 class DataBaseConstants private constructor()
 {
 
-    object GUEST
+    object TAREFAS
     {
-        const val TABLE_NAME = "GUEST"
+        const val TABLE_NAME = "TAREFAS"
 
         object COLUMNS
         {
