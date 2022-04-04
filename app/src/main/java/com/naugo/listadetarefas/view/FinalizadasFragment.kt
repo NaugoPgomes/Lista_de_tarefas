@@ -5,14 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.naugo.listadetarefas.R
-import com.naugo.listadetarefas.service.constants.GuestConstants
+import com.naugo.listadetarefas.service.constants.TarefasConstants
 import com.naugo.listadetarefas.view.adapter.GuestAdapter
 import com.naugo.listadetarefas.view.listener.GuestListener
 import com.naugo.listadetarefas.viewModel.TodosViewModel
@@ -43,7 +42,7 @@ class FinalizadasFragment : Fragment() {
         val intent = Intent(context, CadastroTarefaActivity::class.java)
 
         val bundle = Bundle()
-        bundle.putInt(GuestConstants.GUESTID,id)
+        bundle.putInt(TarefasConstants.GUESTID,id)
 
         intent.putExtras(bundle)
 
@@ -53,7 +52,7 @@ class FinalizadasFragment : Fragment() {
       override fun onDelete(id: Int)
       {
         mViewModel.delete(id)
-        mViewModel.load(GuestConstants.FILTER.CONCLUIDO)
+        mViewModel.load(TarefasConstants.FILTER.CONCLUIDO)
       }
 
     }
@@ -68,7 +67,7 @@ class FinalizadasFragment : Fragment() {
   override fun onResume()
   {
     super.onResume()
-    mViewModel.load(GuestConstants.FILTER.CONCLUIDO)
+    mViewModel.load(TarefasConstants.FILTER.CONCLUIDO)
 
   }
 

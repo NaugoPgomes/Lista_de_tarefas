@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.naugo.listadetarefas.viewModel.CadastroTarefasViewModel
 import com.naugo.listadetarefas.R
-import com.naugo.listadetarefas.service.constants.GuestConstants
+import com.naugo.listadetarefas.service.constants.TarefasConstants
 import kotlinx.android.synthetic.main.activity_cadastro_tarefa.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -39,7 +39,7 @@ class CadastroTarefaActivity : AppCompatActivity(), View.OnClickListener, DatePi
         val bundle = intent.extras
         if(bundle != null)
         {
-            mGuestId = bundle.getInt(GuestConstants.GUESTID)
+            mGuestId = bundle.getInt(TarefasConstants.GUESTID)
             mViewModel.load(mGuestId)
         }
     }
@@ -82,7 +82,7 @@ class CadastroTarefaActivity : AppCompatActivity(), View.OnClickListener, DatePi
         {
             if(it)
             {
-                Toast.makeText(applicationContext, "Sucesso", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "Tarefa cadastrada com sucesso", Toast.LENGTH_SHORT).show()
             }
             else
             {
@@ -104,7 +104,6 @@ class CadastroTarefaActivity : AppCompatActivity(), View.OnClickListener, DatePi
         button_save.setOnClickListener(this)
         data.setOnClickListener(this)
     }
-
 
 
 }

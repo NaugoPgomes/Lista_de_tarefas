@@ -5,12 +5,12 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.naugo.listadetarefas.service.model.GuestModel
-import com.naugo.listadetarefas.service.repository.GuestRepositore
+import com.naugo.listadetarefas.service.repository.Repositore
 
 class CadastroTarefasViewModel(application: Application) : AndroidViewModel(application) {
 
     private val mContext = application.applicationContext
-    private val mGuestRepositore: GuestRepositore = GuestRepositore.getInstance(mContext)
+    private val mRepositore: Repositore = Repositore.getInstance(mContext)
 
     private var mSalvarFormulario = MutableLiveData<Boolean>() // tem como mudar valor (por isso o m no inicio)
     val SalvarFormulario: LiveData<Boolean> = mSalvarFormulario // não da para mudar valor
@@ -23,17 +23,17 @@ class CadastroTarefasViewModel(application: Application) : AndroidViewModel(appl
 
         if(id == 0)
         {
-            mSalvarFormulario.value = mGuestRepositore.save(guest)
+            mSalvarFormulario.value = mRepositore.save(guest)
         }
         else
         {
-            mSalvarFormulario.value = mGuestRepositore.update(guest)
+            mSalvarFormulario.value = mRepositore.update(guest)
         }
     }
 
     fun load(id : Int)
     {
-        mGuest.value = mGuestRepositore.get(id)
+        mGuest.value = mRepositore.get(id)
     }
 
 }

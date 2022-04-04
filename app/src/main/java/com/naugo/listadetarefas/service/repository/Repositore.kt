@@ -3,20 +3,25 @@ package com.naugo.listadetarefas.service.repository
 import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
+import android.content.Intent
+import android.database.Cursor
+import com.naugo.listadetarefas.MainActivity
 import com.naugo.listadetarefas.service.constants.DataBaseConstants
+import com.naugo.listadetarefas.service.constants.DataBaseConstantsUsuario
 import com.naugo.listadetarefas.service.model.GuestModel
+import com.naugo.listadetarefas.service.model.GuestModelUsuario
 
-class GuestRepositore private constructor(context: Context) {
+class Repositore private constructor(context: Context) {
 
     // inicio singleton
-    private var mGuestDataBaseHelper: GuestDataBaseHelper = GuestDataBaseHelper(context)
+    private var mDataBaseHelper: DataBaseHelper = DataBaseHelper(context)
 
     companion object {
-        private lateinit var repositore: GuestRepositore // essa variavel guarda a instancia da classe
+        private lateinit var repositore: Repositore // essa variavel guarda a instancia da classe
 
-        fun getInstance(context: Context): GuestRepositore {
+        fun getInstance(context: Context): Repositore {
             if (!::repositore.isInitialized) {
-                repositore = GuestRepositore(context)
+                repositore = Repositore(context)
             }
 
             return repositore
@@ -29,7 +34,7 @@ class GuestRepositore private constructor(context: Context) {
         val list: MutableList<GuestModel> = ArrayList()
 
         return try {
-            val db = mGuestDataBaseHelper.readableDatabase
+            val db = mDataBaseHelper.readableDatabase
 
             val cursor = db.rawQuery("SELECT id, tarefa, data, hora, concluida FROM Guest WHERE concluida = 0",
                     null)
@@ -65,7 +70,7 @@ class GuestRepositore private constructor(context: Context) {
         val list: MutableList<GuestModel> = ArrayList()
 
         return try {
-            val db = mGuestDataBaseHelper.readableDatabase
+            val db = mDataBaseHelper.readableDatabase
 
             val cursor = db.rawQuery("SELECT id, tarefa, data, hora, concluida FROM Guest WHERE concluida = 1",
                     null)
@@ -99,7 +104,7 @@ class GuestRepositore private constructor(context: Context) {
     {
         var guest: GuestModel? = null
         return try {
-            val db = mGuestDataBaseHelper.readableDatabase
+            val db = mDataBaseHelper.readableDatabase
 
             val projection = arrayOf(DataBaseConstants.GUEST.COLUMNS.TAREFA,DataBaseConstants.GUEST.COLUMNS.DATA,
                     DataBaseConstants.GUEST.COLUMNS.HORA,DataBaseConstants.GUEST.COLUMNS.CONCLUIDA)
@@ -133,7 +138,7 @@ class GuestRepositore private constructor(context: Context) {
 
     fun save(guest: GuestModel): Boolean {
         return try {
-            val db = mGuestDataBaseHelper.writableDatabase
+            val db = mDataBaseHelper.writableDatabase
 
             val values = ContentValues()
             values.put(DataBaseConstants.GUEST.COLUMNS.TAREFA, guest.tarefa)
@@ -151,7 +156,7 @@ class GuestRepositore private constructor(context: Context) {
 
     fun update(guest: GuestModel): Boolean {
         return try {
-            val db = mGuestDataBaseHelper.writableDatabase
+            val db = mDataBaseHelper.writableDatabase
 
             val values = ContentValues()
             values.put(DataBaseConstants.GUEST.COLUMNS.TAREFA, guest.tarefa)
@@ -172,7 +177,7 @@ class GuestRepositore private constructor(context: Context) {
 
     fun deletar(id: Int): Boolean {
         return try {
-            val db = mGuestDataBaseHelper.writableDatabase
+            val db = mDataBaseHelper.writableDatabase
 
 
             val selection = DataBaseConstants.GUEST.COLUMNS.ID + " = ?"
@@ -185,5 +190,63 @@ class GuestRepositore private constructor(context: Context) {
             false
         }
     }
+
+    fun register(guest: GuestModelUsuario): Boolean
+    {
+        return try {
+            val db =  mDataBaseHelper.writableDatabase
+
+            val values = ContentValues()
+            values.put(DataBaseConstantsUsuario.GUEST_USUARIO.COLUMNS.EMAIL, guest.email)
+            values.put(DataBaseConstantsUsuario.GUEST_USUARIO.COLUMNS.SENHA, guest.senha)
+
+            db.insert(DataBaseConstantsUsuario.GUEST_USUARIO.TABLE_NAME, null, values)
+
+            true
+        } catch (e: java.lang.Exception)
+        {
+            false
+        }
+
+    }
+
+
+    @SuppressLint("Range")
+    fun Login(): List<GuestModelUsuario>
+    {
+
+        val list: MutableList<GuestModelUsuario> = ArrayList()
+
+        return try {
+            val db = mDataBaseHelper.readableDatabase
+
+            val cursor = db.rawQuery("SELECT id, email, senha FROM Guest_Usuario",
+                null)
+
+            if(cursor != null && cursor.count > 0)
+            {
+                while(cursor.moveToNext())
+                {
+                    val id = cursor.getInt(cursor.getColumnIndex(DataBaseConstantsUsuario.GUEST_USUARIO.COLUMNS.ID))
+                    val email = cursor.getString(cursor.getColumnIndex(DataBaseConstantsUsuario.GUEST_USUARIO.COLUMNS.EMAIL))
+                    val senha = cursor.getString(cursor.getColumnIndex(DataBaseConstantsUsuario.GUEST_USUARIO.COLUMNS.SENHA))
+
+
+                    val guest = GuestModelUsuario(id, email, senha)
+                    list.add(guest)
+                }
+
+            }
+
+            cursor?.close()
+
+            list
+        } catch (e: Exception) {
+            list
+        }
+
+    }
+
+
 
 }
