@@ -210,43 +210,4 @@ class Repositore private constructor(context: Context) {
 
     }
 
-
-    @SuppressLint("Range")
-    fun Login(): List<ModelUsuario>
-    {
-
-        val list: MutableList<ModelUsuario> = ArrayList()
-
-        return try {
-            val db = mDataBaseHelper.readableDatabase
-
-            val cursor = db.rawQuery("SELECT id, email, senha FROM Usuario",
-                null)
-
-            if(cursor != null && cursor.count > 0)
-            {
-                while(cursor.moveToNext())
-                {
-                    val id = cursor.getInt(cursor.getColumnIndex(DataBaseConstantsUsuario.USUARIO.COLUMNS.ID))
-                    val email = cursor.getString(cursor.getColumnIndex(DataBaseConstantsUsuario.USUARIO.COLUMNS.EMAIL))
-                    val senha = cursor.getString(cursor.getColumnIndex(DataBaseConstantsUsuario.USUARIO.COLUMNS.SENHA))
-
-
-                    val guest = ModelUsuario(id, email, senha)
-                    list.add(guest)
-                }
-
-            }
-
-            cursor?.close()
-
-            list
-        } catch (e: Exception) {
-            list
-        }
-
-    }
-
-
-
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,16 +13,7 @@
         android:layout_height="200dp"
         android:layout_marginTop="40dp"
         android:src="@drawable/login"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <View
-        android:id="@+id/container"
-        style="@style/ContainerComponents"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo"
+        android:layout_centerHorizontal="true"
         />
 
     <EditText
@@ -31,9 +22,7 @@
         android:hint="email"
         android:inputType="textEmailAddress"
         android:drawableEnd="@drawable/ic_email"
-        app:layout_constraintStart_toStartOf="@+id/container"
-        app:layout_constraintEnd_toEndOf="@+id/container"
-        app:layout_constraintTop_toTopOf="@+id/container"
+        android:layout_below="@id/logo"
         android:autofillHints="" />
 
     <EditText
@@ -42,9 +31,7 @@
         android:inputType="textPassword"
         android:hint="senha"
         android:drawableEnd="@drawable/ic_eye"
-        app:layout_constraintStart_toStartOf="@+id/container"
-        app:layout_constraintEnd_toEndOf="@+id/container"
-        app:layout_constraintTop_toBottomOf="@+id/email"
+        android:layout_below="@id/email"
         android:autofillHints="" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -53,11 +40,8 @@
         android:textSize="18sp"
         android:textColor="@color/black"
         android:text="entrar"
+        android:layout_below="@id/senha"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/senha"
-
         />
 
     <TextView
@@ -70,9 +54,8 @@
         android:layout_marginTop="60dp"
         android:layout_marginBottom="40dp"
         android:text="@string/ainda_n_o_tem_uma_conta_cadastre_se"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
+        android:layout_below="@id/button"
+        android:layout_centerHorizontal="true"
         />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

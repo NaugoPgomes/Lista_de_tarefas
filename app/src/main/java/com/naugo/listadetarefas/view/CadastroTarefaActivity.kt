@@ -82,7 +82,6 @@ class CadastroTarefaActivity : AppCompatActivity(), View.OnClickListener, DatePi
         {
             if(it)
             {
-                Toast.makeText(applicationContext, "Tarefa cadastrada com sucesso", Toast.LENGTH_SHORT).show()
             }
             else
             {
