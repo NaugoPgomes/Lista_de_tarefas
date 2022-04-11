@@ -5,13 +5,14 @@
  
 ## algumas fotos do app
 
-![1](https://user-images.githubusercontent.com/80015739/162227983-ce8c19e5-b2fe-4f9a-9073-a268a7a0a623.png)
-![2](https://user-images.githubusercontent.com/80015739/162228030-c4ec7299-553a-4167-b59f-76e752e5efa6.png)
-![3](https://user-images.githubusercontent.com/80015739/162228067-163f0c2b-3025-4392-800c-1854bae320e1.png)
-![4](https://user-images.githubusercontent.com/80015739/162228100-b05de60f-2f0e-4640-ace7-65ec6e5dd2f2.png)
-![5](https://user-images.githubusercontent.com/80015739/162228132-9ca932aa-a7fc-493f-9546-a948ad220239.png)
-![6](https://user-images.githubusercontent.com/80015739/162228172-25d21f58-f645-4729-b739-83e7e469082e.png)
-![7](https://user-images.githubusercontent.com/80015739/162228206-37950921-3192-41ce-b209-10d9458a239a.png)
+![1](https://user-images.githubusercontent.com/80015739/162646453-130bd528-608d-4357-93d7-44bd4412d2ab.png)
+![2](https://user-images.githubusercontent.com/80015739/162646469-8f10029a-9c45-405b-b2c4-022fbb16a221.png)
+![3](https://user-images.githubusercontent.com/80015739/162646478-02f34bf0-a4e9-47d2-954a-22edceb281a7.png)
+![4](https://user-images.githubusercontent.com/80015739/162646488-179c8efb-0193-43c8-85d4-907e2c02faf7.png)
+![5](https://user-images.githubusercontent.com/80015739/162646495-4660ec58-c3e8-45a5-a99b-e2097f45429b.png)
+![6](https://user-images.githubusercontent.com/80015739/162646499-c180b1c2-8186-4e0c-9e86-a42e76fe8e68.png)
+![7](https://user-images.githubusercontent.com/80015739/162646504-3a2ec39f-503d-4381-845f-83cc3d85f2cb.png)
+![8](https://user-images.githubusercontent.com/80015739/162646532-225d6c23-35e2-493a-a05b-1cf1e8055704.png)
 
 
  ## Banco de Dados 
