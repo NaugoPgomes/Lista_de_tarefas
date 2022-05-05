@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/Relative_root"
+    android:background="@drawable/background"
     android:padding="16dp"
     tools:context=".view.CadastroTarefaActivity">
 
@@ -20,7 +21,8 @@
         style="@style/Edit_Text_Cadastro_Tarefas"
         android:inputType="text"
         android:layout_marginTop="220dp"
-        android:hint="Nome da Tarefa" />
+        android:textColorHint="@color/black"
+        android:hint="Nome da Tarefa :" />
 
     <EditText
         android:id="@+id/hora"
@@ -28,7 +30,8 @@
         android:layout_below="@+id/tarefa"
         android:inputType="time"
         android:layout_marginTop="15dp"
-        android:hint="Hora"/>
+        android:textColorHint="@color/black"
+        android:hint="Hora : "/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/data"
@@ -46,6 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_below="@+id/data"
+        android:textColor="@color/black"
         android:text="@string/finalizada" />
 
 

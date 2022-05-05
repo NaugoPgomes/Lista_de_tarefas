@@ -136,15 +136,15 @@ class Repositore private constructor(context: Context) {
     }
 
 
-    fun save(guest: Model): Boolean {
+    fun save(tarefas: Model): Boolean {
         return try {
             val db = mDataBaseHelper.writableDatabase
 
             val values = ContentValues()
-            values.put(DataBaseConstants.TAREFAS.COLUMNS.TAREFA, guest.tarefa)
-            values.put(DataBaseConstants.TAREFAS.COLUMNS.DATA, guest.data)
-            values.put(DataBaseConstants.TAREFAS.COLUMNS.HORA, guest.hora)
-            values.put(DataBaseConstants.TAREFAS.COLUMNS.CONCLUIDA, guest.concluida)
+            values.put(DataBaseConstants.TAREFAS.COLUMNS.TAREFA, tarefas.tarefa)
+            values.put(DataBaseConstants.TAREFAS.COLUMNS.DATA, tarefas.data)
+            values.put(DataBaseConstants.TAREFAS.COLUMNS.HORA, tarefas.hora)
+            values.put(DataBaseConstants.TAREFAS.COLUMNS.CONCLUIDA, tarefas.concluida)
 
             db.insert(DataBaseConstants.TAREFAS.TABLE_NAME, null, values)
 
@@ -154,18 +154,18 @@ class Repositore private constructor(context: Context) {
         }
     }
 
-    fun update(guest: Model): Boolean {
+    fun update(tarefas: Model): Boolean {
         return try {
             val db = mDataBaseHelper.writableDatabase
 
             val values = ContentValues()
-            values.put(DataBaseConstants.TAREFAS.COLUMNS.TAREFA, guest.tarefa)
-            values.put(DataBaseConstants.TAREFAS.COLUMNS.DATA, guest.data)
-            values.put(DataBaseConstants.TAREFAS.COLUMNS.HORA, guest.hora)
-            values.put(DataBaseConstants.TAREFAS.COLUMNS.CONCLUIDA, guest.concluida)
+            values.put(DataBaseConstants.TAREFAS.COLUMNS.TAREFA, tarefas.tarefa)
+            values.put(DataBaseConstants.TAREFAS.COLUMNS.DATA, tarefas.data)
+            values.put(DataBaseConstants.TAREFAS.COLUMNS.HORA, tarefas.hora)
+            values.put(DataBaseConstants.TAREFAS.COLUMNS.CONCLUIDA, tarefas.concluida)
 
             val selection = DataBaseConstants.TAREFAS.COLUMNS.ID + " = ?"
-            val args = arrayOf(guest.id.toString())
+            val args = arrayOf(tarefas.id.toString())
 
             db.update(DataBaseConstants.TAREFAS.TABLE_NAME, values, selection, args)
 
@@ -191,14 +191,14 @@ class Repositore private constructor(context: Context) {
         }
     }
 
-    fun register(guest: ModelUsuario): Boolean
+    fun register(usuarios: ModelUsuario): Boolean
     {
         return try {
             val db =  mDataBaseHelper.writableDatabase
 
             val values = ContentValues()
-            values.put(DataBaseConstantsUsuario.USUARIO.COLUMNS.EMAIL, guest.email)
-            values.put(DataBaseConstantsUsuario.USUARIO.COLUMNS.SENHA, guest.senha)
+            values.put(DataBaseConstantsUsuario.USUARIO.COLUMNS.EMAIL, usuarios.email)
+            values.put(DataBaseConstantsUsuario.USUARIO.COLUMNS.SENHA, usuarios.senha)
 
             db.insert(DataBaseConstantsUsuario.USUARIO.TABLE_NAME, null, values)
 
