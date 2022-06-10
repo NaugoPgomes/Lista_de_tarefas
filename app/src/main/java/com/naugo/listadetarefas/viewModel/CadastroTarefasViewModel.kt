@@ -49,8 +49,8 @@ class CadastroTarefasViewModel(application: Application) : AndroidViewModel(appl
 
         var email = mRepositore.getEmail()
 
-        var userName: String = "projetotccnaugo@gmail.com"
-        var password: String = "eglcbgadcfgoergk"
+        var userName: String = "*************" // colocar o email
+        var password: String = "*************" // palavra-passe de aplicações que vc consegue na area de segurança do google
 
         var messageToSend = nomeTarefa
         var properties: Properties = Properties()
