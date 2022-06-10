@@ -26,11 +26,13 @@
 + editar as tarefas 
 + deletar as tarefas
 + finalizar as tarefas
++ envio de E-mail
 
 ## Informações adicionais
  
  + O usuário vai cadastrar as tarefas e depois que a tarefa estiver cadastrada, o usuário vai pode finalizar a tarefa, deletar ou editar a tarefa.
  + Quando a tarefa for finalizada ela vai para uma área específica aonde fica todas as tarefas finalizadas.
+ + Quando uma tarefa for cadastrada o usuário vai receber um e-mail falando que uma nova tarefa foi cadastrada e o nome dessa tarefa.
  + o App esta sendo desenvolvido em kotlin.
  + o App so funciona em dispositivos android.
 
