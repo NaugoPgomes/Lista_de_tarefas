@@ -40,7 +40,7 @@ class TodosFragment : Fragment() {
 
     mListener = object : Listener{
       override fun onClick(id: Int) {
-        val intent = Intent(context, CadastroTarefaActivity::class.java)
+        val intent = Intent(context, EditarTarefaActivity::class.java)
 
         val bundle = Bundle()
         bundle.putInt(TarefasConstants.TAREFASID,id)

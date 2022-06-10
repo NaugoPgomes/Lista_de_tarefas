@@ -6,6 +6,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.naugo.listadetarefas.service.model.Model
 import com.naugo.listadetarefas.service.repository.Repositore
+import com.naugo.listadetarefas.view.LoginActivity
+import java.util.*
+import javax.mail.Message
+import javax.mail.MessagingException
+import javax.mail.PasswordAuthentication
+import javax.mail.Session
+import javax.mail.internet.InternetAddress
+import javax.mail.internet.MimeMessage
 
 class CadastroTarefasViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -34,6 +42,46 @@ class CadastroTarefasViewModel(application: Application) : AndroidViewModel(appl
     fun load(id : Int)
     {
         mTarefas.value = mRepositore.get(id)
+    }
+
+    fun enviarEmail(nomeTarefa: String)
+    {
+
+        var email = mRepositore.getEmail()
+
+        var userName: String = "projetotccnaugo@gmail.com"
+        var password: String = "eglcbgadcfgoergk"
+
+        var messageToSend = nomeTarefa
+        var properties: Properties = Properties()
+
+        properties.put("mail.smtp.auth", "true")
+        properties.put("mail.smtp.starttls.enable", "true")
+        properties.put("mail.smtp.host", "smtp.gmail.com")
+        properties.put("mail.smtp.port", "587")
+
+        var session : Session = Session.getInstance(properties,
+            object : javax.mail.Authenticator() {
+                @Override
+                override fun getPasswordAuthentication(): PasswordAuthentication {
+                    return PasswordAuthentication(userName, password)
+                }
+            })
+        try {
+            val mimeMessage = MimeMessage(session)
+            mimeMessage.setFrom(InternetAddress(userName))
+            mimeMessage.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email))
+            mimeMessage.setSubject("Uma nova tarefa foi adicionada na sua lista de tarefas")
+            mimeMessage.setText(messageToSend)
+            mimeMessage.sentDate = Date()
+
+            val smtpTransport = session.getTransport("smtp")
+            smtpTransport.connect()
+            smtpTransport.sendMessage(mimeMessage, mimeMessage.allRecipients)
+            smtpTransport.close()
+        } catch (messagingException: MessagingException) {
+            messagingException.printStackTrace()
+        }
     }
 
 }

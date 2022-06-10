@@ -14,16 +14,17 @@ import com.naugo.listadetarefas.R
 import com.naugo.listadetarefas.service.constants.TarefasConstants
 import com.naugo.listadetarefas.view.adapter.Adapter
 import com.naugo.listadetarefas.view.listener.Listener
+import com.naugo.listadetarefas.viewModel.FinalizadasViewModel
 import com.naugo.listadetarefas.viewModel.TodosViewModel
 
 class FinalizadasFragment : Fragment() {
 
-  private lateinit var mViewModel: TodosViewModel
+  private lateinit var mViewModel: FinalizadasViewModel
   private val mAdapter: Adapter = Adapter()
   private lateinit var mListener: Listener
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-    mViewModel = ViewModelProvider(this).get(TodosViewModel::class.java)
+    mViewModel = ViewModelProvider(this).get(FinalizadasViewModel::class.java)
     val root = inflater.inflate(R.layout.fragment_concluidas, container, false)
 
     // RecyclerView
@@ -39,7 +40,7 @@ class FinalizadasFragment : Fragment() {
 
     mListener = object : Listener{
       override fun onClick(id: Int) {
-        val intent = Intent(context, CadastroTarefaActivity::class.java)
+        val intent = Intent(context, EditarTarefaActivity::class.java)
 
         val bundle = Bundle()
         bundle.putInt(TarefasConstants.TAREFASID,id)

@@ -9,6 +9,7 @@ import com.naugo.listadetarefas.MainActivity
 import com.naugo.listadetarefas.service.constants.DataBaseConstants
 import com.naugo.listadetarefas.service.constants.DataBaseConstantsUsuario
 import com.naugo.listadetarefas.service.model.Model
+import com.naugo.listadetarefas.service.model.ModelEmailGet
 import com.naugo.listadetarefas.service.model.ModelUsuario
 
 class Repositore private constructor(context: Context) {
@@ -209,5 +210,35 @@ class Repositore private constructor(context: Context) {
         }
 
     }
+
+    @SuppressLint("Range")
+    fun getEmail(): String
+    {
+        var usuarios: ModelEmailGet
+        return try {
+            val db = mDataBaseHelper.readableDatabase
+
+
+            val cursor = db.rawQuery("SELECT email FROM Usuario WHERE id = 1",
+                null)
+
+
+            if(cursor != null && cursor.count > 0)
+            {
+                cursor.moveToFirst()
+
+                val email = cursor.getString(cursor.getColumnIndex(DataBaseConstantsUsuario.USUARIO.COLUMNS.EMAIL))
+                return email.toString()
+            }
+
+            cursor?.close()
+
+            return ""
+
+        } catch (e: Exception) {
+            return ""
+        }
+    }
+
 
 }
